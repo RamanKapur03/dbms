@@ -1,0 +1,160 @@
+
+SQL*Plus: Release 11.2.0.2.0 Production on Tue Sep 28 16:05:38 2021
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> conn
+Enter user-name: sys as sysdba
+Enter password:
+Connected.
+SQL> select * from employee
+  2  select * from employee;
+select * from employee
+*
+ERROR at line 2:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select * from employee;
+
+EMPID EMPNAME              DOB       ADDRESS              DEPAR
+----- -------------------- --------- -------------------- -----
+IT216 Raman Kapur          28-SEP-21 Noida                IT
+IT219 Raunaq Soneja        20-SEP-20 Delhi                IT
+
+SQL> alter table employee
+  2  add salary number(7,2);
+
+Table altered.
+
+SQL> select * from employee;
+
+EMPID EMPNAME              DOB       ADDRESS              DEPAR     SALARY
+----- -------------------- --------- -------------------- ----- ----------
+IT216 Raman Kapur          28-SEP-21 Noida                IT
+IT219 Raunaq Soneja        20-SEP-20 Delhi                IT
+
+SQL> update employee
+  2  set salary=100.10
+  3  where empid = 'IT216';
+
+1 row updated.
+
+SQL> select * from employee;
+
+EMPID EMPNAME              DOB       ADDRESS              DEPAR     SALARY
+----- -------------------- --------- -------------------- ----- ----------
+IT216 Raman Kapur          28-SEP-21 Noida                IT         100.1
+IT219 Raunaq Soneja        20-SEP-20 Delhi                IT
+
+SQL> update employee
+  2  set salary=10.09
+  3  where empid = 'IT219';
+
+1 row updated.
+
+SQL> select * from employee;
+
+EMPID EMPNAME              DOB       ADDRESS              DEPAR     SALARY
+----- -------------------- --------- -------------------- ----- ----------
+IT216 Raman Kapur          28-SEP-21 Noida                IT         100.1
+IT219 Raunaq Soneja        20-SEP-20 Delhi                IT         10.09
+
+SQL> alter table employee
+  2  drop salary;
+drop salary
+     *
+ERROR at line 2:
+ORA-00905: missing keyword
+
+
+SQL> alter table employee
+  2  drop salary
+  3  where salary = 100.1;
+drop salary
+     *
+ERROR at line 2:
+ORA-00905: missing keyword
+
+
+SQL> alter table employee
+  2  drop cloumn salary;
+drop cloumn salary
+     *
+ERROR at line 2:
+ORA-00905: missing keyword
+
+
+SQL> alter table employee
+  2  drop column salary;
+alter table employee
+*
+ERROR at line 1:
+ORA-12988: cannot drop column from table owned by SYS
+
+
+SQL> alter table employee
+  2  modify empname
+  3  varchar(15);
+
+Table altered.
+
+SQL> desc employee
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+
+ EMPID                                     NOT NULL VARCHAR2(5)
+ EMPNAME                                   NOT NULL VARCHAR2(15)
+ DOB                                                DATE
+ ADDRESS                                            VARCHAR2(20)
+ DEPARTMENT                                         VARCHAR2(5)
+ SALARY                                             NUMBER(7,2)
+
+SQL> alter table employee
+  2  modify empname
+  3  varchar(20);
+
+Table altered.
+
+SQL> desc employee
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+
+ EMPID                                     NOT NULL VARCHAR2(5)
+ EMPNAME                                   NOT NULL VARCHAR2(20)
+ DOB                                                DATE
+ ADDRESS                                            VARCHAR2(20)
+ DEPARTMENT                                         VARCHAR2(5)
+ SALARY                                             NUMBER(7,2)
+
+SQL> rename employee emp
+  2  rename employee emp;
+rename employee emp
+                *
+ERROR at line 1:
+ORA-00946: missing TO keyword
+
+
+SQL> rename employee emp;
+rename employee emp
+                *
+ERROR at line 1:
+ORA-00946: missing TO keyword
+
+
+SQL> rename employee emp;
+rename employee emp
+                *
+ERROR at line 1:
+ORA-00946: missing TO keyword
+
+
+SQL> rename employee to emp;
+
+Table renamed.
+
+SQL> rename emp to employee;
+
+Table renamed.
+
+SQL>
