@@ -1,0 +1,242 @@
+
+SQL*Plus: Release 11.2.0.2.0 Production on Tue Oct 26 03:06:05 2021
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> conn sys as sysdba
+Enter password:
+Connected.
+SQL> create table studentRaman(rno number(5),name varchar(10),branch varchar(10),marks number(3),semester number(2),section varchar(2));
+
+Table created.
+
+SQL> insert into studentRaman values(&rno,'&name','&branch',&marks,&semseter,'&section' );
+Enter value for rno: 1
+Enter value for name: raman
+Enter value for branch: cse
+Enter value for marks: 100
+Enter value for semseter: 5
+Enter value for section: c
+old   1: insert into studentRaman values(&rno,'&name','&branch',&marks,&semseter,'&section' )
+new   1: insert into studentRaman values(1,'raman','cse',100,5,'c' )
+
+1 row created.
+
+SQL> insert into studentRaman values(&rno,'&name','&branch',&marks,&semester,'&section' );
+Enter value for rno: 1
+Enter value for name: raman
+Enter value for branch: cse
+Enter value for marks: 100
+Enter value for semester: 5
+Enter value for section: c
+old   1: insert into studentRaman values(&rno,'&name','&branch',&marks,&semester,'&section' )
+new   1: insert into studentRaman values(1,'raman','cse',100,5,'c' )
+
+1 row created.
+
+SQL> insert into studentRaman values(&rno,'&name','&branch',&marks,&semester,'&section' );
+Enter value for rno: 2
+Enter value for name: raunaq
+Enter value for branch: cse
+Enter value for marks: 70
+Enter value for semester: 5
+Enter value for section: c
+old   1: insert into studentRaman values(&rno,'&name','&branch',&marks,&semester,'&section' )
+new   1: insert into studentRaman values(2,'raunaq','cse',70,5,'c' )
+
+1 row created.
+
+SQL> insert into studentRaman values(&rno,'&name','&branch',&marks,&semester,'&section' );
+Enter value for rno: 3
+Enter value for name: sachin
+Enter value for branch: cse
+Enter value for marks: 50
+Enter value for semester: 5
+Enter value for section: c
+old   1: insert into studentRaman values(&rno,'&name','&branch',&marks,&semester,'&section' )
+new   1: insert into studentRaman values(3,'sachin','cse',50,5,'c' )
+
+1 row created.
+
+SQL> insert into studentRaman values(&rno,'&name','&branch',&marks,&semester,'&section' );
+Enter value for rno: 4
+Enter value for name: rajan
+Enter value for branch: ece
+Enter value for marks: 100
+Enter value for semester: 5
+Enter value for section: c
+old   1: insert into studentRaman values(&rno,'&name','&branch',&marks,&semester,'&section' )
+new   1: insert into studentRaman values(4,'rajan','ece',100,5,'c' )
+
+1 row created.
+
+SQL> select * from studentRaman;
+
+       RNO NAME       BRANCH          MARKS   SEMESTER SE
+---------- ---------- ---------- ---------- ---------- --
+         1 raman      cse               100          5 c
+         1 raman      cse               100          5 c
+         2 raunaq     cse                70          5 c
+         3 sachin     cse                50          5 c
+         4 rajan      ece               100          5 c
+
+SQL> insert into studentRaman values(&rno,'&name','&branch',&marks,&semester,'&section' );
+Enter value for rno: 5
+Enter value for name: rajat
+Enter value for branch: cse
+Enter value for marks: 90
+Enter value for semester: 5
+Enter value for section: c
+old   1: insert into studentRaman values(&rno,'&name','&branch',&marks,&semester,'&section' )
+new   1: insert into studentRaman values(5,'rajat','cse',90,5,'c' )
+
+1 row created.
+
+SQL> /
+Enter value for rno: 6
+Enter value for name: naman
+Enter value for branch: cse
+Enter value for marks: 20
+Enter value for semester: 5
+Enter value for section: c
+old   1: insert into studentRaman values(&rno,'&name','&branch',&marks,&semester,'&section' )
+new   1: insert into studentRaman values(6,'naman','cse',20,5,'c' )
+
+1 row created.
+
+SQL> select * from studentRaman ;
+
+       RNO NAME       BRANCH          MARKS   SEMESTER SE
+---------- ---------- ---------- ---------- ---------- --
+         1 raman      cse               100          5 c
+         1 raman      cse               100          5 c
+         2 raunaq     cse                70          5 c
+         3 sachin     cse                50          5 c
+         4 rajan      ece               100          5 c
+         5 rajat      cse                90          5 c
+         6 naman      cse                20          5 c
+
+7 rows selected.
+
+SQL> delete from studentRaman
+  2  where rno = 1;
+
+2 rows deleted.
+
+SQL> insert into studentRaman values(&rno,'&name','&branch',&marks,&semester,'&section' );
+Enter value for rno: 1
+Enter value for name: raman
+Enter value for branch: cse
+Enter value for marks: 100
+Enter value for semester: 5
+Enter value for section: c
+old   1: insert into studentRaman values(&rno,'&name','&branch',&marks,&semester,'&section' )
+new   1: insert into studentRaman values(1,'raman','cse',100,5,'c' )
+
+1 row created.
+
+SQL> select * from studentRaman;
+
+       RNO NAME       BRANCH          MARKS   SEMESTER SE
+---------- ---------- ---------- ---------- ---------- --
+         2 raunaq     cse                70          5 c
+         3 sachin     cse                50          5 c
+         4 rajan      ece               100          5 c
+         5 rajat      cse                90          5 c
+         6 naman      cse                20          5 c
+         1 raman      cse               100          5 c
+
+6 rows selected.
+
+SQL> insert into studentRaman values(&rno,'&name','&branch',&marks,&semester,'&section' );
+Enter value for rno: 7
+Enter value for name: rashika
+Enter value for branch: ce
+Enter value for marks: 80
+Enter value for semester: 5
+Enter value for section: c
+old   1: insert into studentRaman values(&rno,'&name','&branch',&marks,&semester,'&section' )
+new   1: insert into studentRaman values(7,'rashika','ce',80,5,'c' )
+
+1 row created.
+
+SQL> /
+Enter value for rno: 8
+Enter value for name: akshat
+Enter value for branch: ce
+Enter value for marks: 90
+Enter value for semester: 5
+Enter value for section: c
+old   1: insert into studentRaman values(&rno,'&name','&branch',&marks,&semester,'&section' )
+new   1: insert into studentRaman values(8,'akshat','ce',90,5,'c' )
+
+1 row created.
+
+SQL> select * from studentRaman;
+
+       RNO NAME       BRANCH          MARKS   SEMESTER SE
+---------- ---------- ---------- ---------- ---------- --
+         2 raunaq     cse                70          5 c
+         3 sachin     cse                50          5 c
+         4 rajan      ece               100          5 c
+         5 rajat      cse                90          5 c
+         6 naman      cse                20          5 c
+         1 raman      cse               100          5 c
+         7 rashika    ce                 80          5 c
+         8 akshat     ce                 90          5 c
+
+8 rows selected.
+
+NAME
+----------
+raunaq
+sachin
+rajan
+rajat
+naman
+raman
+
+6 rows selected.
+
+SQL> select name from studentRaman
+  2  where branch= any('cse','it','ece');
+
+NAME
+----------
+raunaq
+sachin
+rajan
+rajat
+naman
+raman
+
+6 rows selected.
+
+SQL> select name from studentRaman
+  2  where branch in('cse','it','ece');
+
+NAME
+----------
+raunaq
+sachin
+rajan
+rajat
+naman
+raman
+
+6 rows selected.
+
+SQL> select name from studentRaman
+  2  where marks between 60 and 80;
+
+NAME
+----------
+raunaq
+rashika
+
+SQL> select name from studentRaman
+  2  where section = 'c' and marks between 10 and 30;
+
+NAME
+----------
+naman
