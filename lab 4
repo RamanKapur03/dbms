@@ -240,3 +240,16 @@ SQL> select name from studentRaman
 NAME
 ----------
 naman
+
+SQL> select name from studentRaman
+  2  where name like 'r%';
+
+NAME
+----------
+raunaq
+rajan
+rajat
+raman
+rashika
+
+SQL>
