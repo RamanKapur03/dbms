@@ -1,0 +1,74 @@
+SQL> conn sys as sysdba
+Enter password:
+Connected.
+SQL> create table student (rno number(5) primary key , name varchar(15) not null , fatherName varchar(15) not null , branch varchar(5) default 'CSE');
+
+Table created.
+
+SQL> create table book (ISBN number(5) primary key , title varchar(10) , author varchar(15) , publisher varchar(20) , price number(5) check (price>10));
+
+Table created.
+
+SQL> create table issue (rno number(5) , ISBN number(5) , DOI date not null, primary key (rno , ISBN));
+
+Table created.
+
+SQL> insert into student values(101,'op','po','IT');
+
+1 row created.
+
+SQL> insert into student values(102,'ab','ba','');
+
+1 row created.
+
+SQL> insert into student values(103,'ac','ca','');
+
+1 row created.
+
+SQL> insert into book values(901,'aaa','bbb','ccc',500);
+
+1 row created.
+
+SQL> insert into book values(902,'eee','fff','ggg',400);
+
+1 row created.
+
+SQL> insert into book values(903,'hhh','iii','jjj',300);
+
+1 row created.
+
+SQL> insert into issue values(101,901,'09-nov-2020');
+
+1 row created.
+
+SQL> insert into issue values(102,902,'08-nov-2020');
+
+1 row created.
+
+SQL> insert into issue values(103,903,'07-nov-2020');
+
+1 row created.
+
+SQL> select * from student ;
+
+       RNO NAME            FATHERNAME      BRANC
+---------- --------------- --------------- -----
+       101 op              po              IT
+       102 ab              ba
+       103 ac              ca
+
+SQL> select * from book ;
+
+      ISBN TITLE      AUTHOR          PUBLISHER                 PRICE
+---------- ---------- --------------- -------------------- ----------
+       901 aaa        bbb             ccc                         500
+       902 eee        fff             ggg                         400
+       903 hhh        iii             jjj                         300
+
+SQL> select * from issue ;
+
+       RNO       ISBN DOI
+---------- ---------- ---------
+       101        901 09-NOV-20
+       102        902 08-NOV-20
+       103        903 07-NOV-20
