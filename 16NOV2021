@@ -82,3 +82,63 @@ NAME
 ---------------
 ab
 op
+SQL> ed
+Wrote file afiedt.buf
+
+  1   select name from student,issue,book
+  2  where student.rno=issue.rno and
+  3  book.ISBN=issue.ISBN and
+  4  book.title='DBMS'
+  5  UNION
+  6  select fatherName from student,issue,book
+  7  where student.rno = issue.rno and
+  8  book.ISBN=issue.ISBN and
+  9* book.title='DAA'
+SQL> /
+
+NAME
+---------------
+ba
+op
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1   select name from student,issue,book
+  2  where student.rno=issue.rno and
+  3  book.ISBN=issue.ISBN and
+  4  book.title='DBMS'
+  5  MINUS
+  6  select fatherName from student,issue,book
+  7  where student.rno = issue.rno and
+  8  book.ISBN=issue.ISBN and
+  9* book.title='DAA'
+SQL> //
+
+NAME
+---------------
+op
+
+SQL> /
+
+NAME
+---------------
+op
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1   select name from student,issue,book
+  2  where student.rno=issue.rno and
+  3  book.ISBN=issue.ISBN and
+  4  book.title='DBMS'
+  5  INTERSECT
+  6  select fatherName from student,issue,book
+  7  where student.rno = issue.rno and
+  8  book.ISBN=issue.ISBN and
+  9* book.title='DAA'
+SQL> /
+
+no rows selected
+
+SQL>
