@@ -1,0 +1,84 @@
+SQL> create table student (rno number(5) primary key , name varchar(15) not null , fatherName varchar(15) not null , branch varchar(5) default 'CSE');
+
+Table created.
+
+SQL> create table book (ISBN number(5) primary key , title varchar(10) , author varchar(15) , publisher varchar(20) , price number(5) check (price>10));
+
+Table created.
+
+SQL> create table issue (rno number(5) , ISBN number(5) , DOI date not null, primary key (rno , ISBN));
+
+Table created.
+
+SQL> insert into book values(903,'hhh','iii','jjj',300);
+
+1 row created.
+
+SQL> select * from student;
+
+       RNO NAME            FATHERNAME      BRANC
+---------- --------------- --------------- -----
+       101 op              po              IT
+       102 ab              ba
+       103 ac              ca              ME
+
+SQL> select * from book ;
+
+      ISBN TITLE      AUTHOR          PUBLISHER                 PRICE
+---------- ---------- --------------- -------------------- ----------
+       901 DBMS       bbb             ccc                         500
+       902 DAA        fff             ggg                         400
+       903 hhh        iii             jjj                         300
+
+SQL> insert into issue values(101,901,'09-nov-2020');
+
+1 row created.
+
+SQL> insert into issue values(102,902,'08-nov-2020');
+
+1 row created.
+
+SQL>  insert into issue values(103,903,'07-nov-2020');
+
+1 row created.
+
+SQL> select * from issue;
+
+       RNO       ISBN DOI
+---------- ---------- ---------
+       101        901 09-NOV-20
+       102        902 08-NOV-20
+       103        903 07-NOV-20
+
+SQL>  select name from student,issue,book
+  2  where student.rno=issue.rno and
+  3  book.ISBN=issue.ISBN and
+  4  book.tite='DBMS',
+  5  UNION
+  6  select name from student,issue,book
+  7  where student.rno = issue.rno and
+  8  book.ISBN=issue.ISBN and
+  9  book.title='DAA';
+book.tite='DBMS',
+                *
+ERROR at line 4:
+ORA-00933: SQL command not properly ended
+
+SQL>  ed
+Wrote file afiedt.buf
+
+  1   select name from student,issue,book
+  2  where student.rno=issue.rno and
+  3  book.ISBN=issue.ISBN and
+  4  book.title='DBMS'
+  5  UNION
+  6  select name from student,issue,book
+  7  where student.rno = issue.rno and
+  8  book.ISBN=issue.ISBN and
+  9* book.title='DAA'
+SQL> /
+
+NAME
+---------------
+ab
+op
